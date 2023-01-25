@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
     name: String,
     email: {
         type: String,
-        // unique: true
+        unique: true
     },
     password: String,
     date: {
@@ -13,4 +13,7 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('user', UserSchema);
+// Create the indexes
+const User = mongoose.model('user', UserSchema);
+User.createIndexes();
+module.exports = User;

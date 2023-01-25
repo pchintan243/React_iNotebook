@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
 // For see in console json file
 app.use(express.json());
 
+// Set the path of routes
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 
