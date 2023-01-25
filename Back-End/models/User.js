@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
     name: String,
     email: {
         type: String,
-        unique: true
+        // unique: true
     },
     password: String,
     date: {
@@ -13,4 +13,4 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-const user = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('user', UserSchema);
