@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const UserSchema = new mongoose.Schema({
     name: String,
@@ -13,7 +14,6 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-// Create the indexes
+
 const User = mongoose.model('user', UserSchema);
-User.createIndexes();
 module.exports = User;
