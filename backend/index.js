@@ -1,14 +1,18 @@
 const express = require('express')
 const app = express()
-require("./db")
+
+var cors = require('cors')
+app.use(cors())
+
 const port = 8000
+
+require("./db")
+// For see in console json file
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-
-// For see in console json file
-app.use(express.json());
 
 // Set the path of routes
 app.use('/api/auth', require('./routes/auth'))
