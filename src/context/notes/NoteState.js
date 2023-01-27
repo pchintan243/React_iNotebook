@@ -100,15 +100,20 @@ const NoteState = (props) => {
         });
         const json = response.json();
 
+        // You can't change the state at a time in react
+        // So make a newNote to update the datas
+        let newNotes = JSON.parse(JSON.stringify(notes));
         // Logic to add in client
         for (let index = 0; index < notes.length; index++) {
-            const element = notes[index];
+            const element = newNotes[index];
             if (element._id === id) {
-                element.title = title;
-                element.description = description;
-                element.tag = tag;
+                newNotes[index].title = title;
+                newNotes[index].description = description;
+                newNotes[index].tag = tag;
+                break;
             }
         }
+        setNotes(newNotes);
     }
 
     return (
