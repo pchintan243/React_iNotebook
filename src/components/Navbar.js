@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
     let location = useLocation();
     useEffect(() => {
-        console.log(location.pathname)
+        // console.log(location.pathname)
     }, [location])
     return (
         <>
@@ -16,6 +16,7 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            {/* Bold the navbutton when user click on particular button */}
                             <li className="nav-item">
                                 <Link className={`nav-link ${location.pathname === "/" ? "fw-bold" : ""}`} aria-current="page" to="/">Home</Link>
                             </li>
