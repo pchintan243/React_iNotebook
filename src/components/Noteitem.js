@@ -16,8 +16,8 @@ const Noteitem = (props) => {
                     <p className="card-text">{note.description}</p>
                     {/* Font awesome website use to get the icon */}
                     {/* Delete the note using id */}
-                    <i className="fa-solid fa-trash mx-2" onClick={() => { deleteNote(note._id) }}></i>
-                    <i className="fa-regular fa-pen-to-square mx-2" onClick={()=> {updateNote(note)}}></i>
+                    <i className="fa-solid fa-trash mx-2" onClick={() => { deleteNote(note._id); props.showAlert("Deleted Succesfully..!!", "success"); }}></i>
+                    <i className="fa-regular fa-pen-to-square mx-2" onClick={() => { updateNote(note); }}></i>
                 </div>
             </div>
         </div>

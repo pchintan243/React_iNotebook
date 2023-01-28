@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import noteContext from '../context/notes/noteContext';
 
-const Addnote = () => {
+const Addnote = (props) => {
     const context = useContext(noteContext);
     const { addNote } = context;
 
@@ -13,7 +13,9 @@ const Addnote = () => {
         // Pass the value of title, description and tag
         addNote(note.title, note.description, note.tag);
         // After user click on submit button form detail will be blank --> make sure value in input tag is must
-        setNote({ title: "", description: "", tag: "" })
+        setNote({ title: "", description: "", tag: "" });
+        // Alert
+        props.showAlert("Added Succesfully..!!", "success");
     }
 
     const onChange = (e) => {
