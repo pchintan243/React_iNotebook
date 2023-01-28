@@ -54,15 +54,7 @@ const NoteState = (props) => {
 
         console.log("Adding a new note");
         // Set the value of title, description and tag
-        const note = {
-            "_id": "63d3f9afd29e0bccb28f90d7",
-            "user": "63d0fdc35e27201a29f46920",
-            "title": title,
-            "description": description,
-            "tag": tag,
-            "date": "2023-01-27T16:19:59.846Z",
-            "__v": 0
-        };
+        const note = await response.json();
         setNotes(notes.concat(note));
     }
 
