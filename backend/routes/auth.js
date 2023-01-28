@@ -17,18 +17,19 @@ router.post('/createuser', [
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Password must at least 5 character').isLength({ min: 5 }),
 ], async (req, res) => {
-
+    // Check you get the ddata which you want or not using success
+    let success = false;
     // If there are errors, return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ success, errors: errors.array() });
     }
 
     try {
         // Check whether email is already exist
         let user = await User.findOne({ email: req.body.email });
         if (user) {
-            return res.status(400).json({ error: "Sorry a user with this email is already exists" })
+            return res.status(400).json({ success, error: "Sorry a user with this email is already exists" })
         }
 
         // Secure the password using jwt
@@ -51,9 +52,9 @@ router.post('/createuser', [
         // Token generate
         const authToken = jwt.sign(data, JWT_SECRET);
 
-
-        res.json({ authToken });
         // res.json(user);
+        success = true;
+        res.json({ success, authToken });
     }
     catch (error) {
         console.log(error.message)
@@ -70,7 +71,7 @@ router.post('/login', [
     body('password', 'Password cannot be null').exists(),
 ], async (req, res) => {
     // Check you get the ddata which you want or not using success
-     let success = false;
+    let success = false;
     // If there are errors, return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
