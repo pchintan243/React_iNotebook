@@ -12,7 +12,7 @@ const Addnote = () => {
         e.preventDefault();
         // Pass the value of title, description and tag
         addNote(note.title, note.description, note.tag);
-        // After user click on submit button form detail will be blank
+        // After user click on submit button form detail will be blank --> make sure value in input tag is must
         setNote({ title: "", description: "", tag: "" })
     }
 
